@@ -1,0 +1,4 @@
+.vscode/
+
+# Docker build files
+.devcontainer/.env
