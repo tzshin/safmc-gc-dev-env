@@ -31,6 +31,18 @@ xhost +local:docker
 
 The container is configured to access `/dev/ttyACM0`. If your ESP32 connects on a different port, modify `docker-compose.yml` accordingly.
 
+## Managing Docker Containers
+
+To stop the container when you're done:
+```bash
+docker compose down
+```
+
+If you've modified the Dockerfile and need to rebuild:
+```bash
+docker compose build --no-cache
+```
+
 ## Troubleshooting
 
 1. If you encounter permission errors with Docker commands, you may need to add your user to the docker group. See [Docker's official documentation](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user) on managing Docker as a non-root user.
