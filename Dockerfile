@@ -47,6 +47,10 @@ RUN echo 'KERNEL=="ttyACM*", MODE="0666"' > /etc/udev/rules.d/50-arduino.rules
 
 WORKDIR /workspace
 
+# Create ros2_ws directory structure
+RUN mkdir -p /workspace/ros2_ws/src && \
+    chown -R ros:ros /workspace/ros2_ws
+
 # Create a bashrc with ROS2 setup
 RUN echo "source /opt/ros/humble/setup.bash" >> /etc/bash.bashrc
 

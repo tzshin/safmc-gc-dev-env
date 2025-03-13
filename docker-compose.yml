@@ -1,9 +1,11 @@
 services:
   ros2:
     build: .
+    user: ${USER_ID:-1000}:${GROUP_ID:-1000}
     volumes:
       - ../safmc-groundcontrol2:/workspace/safmc-groundcontrol2
       - ../espkinesis_msgs:/workspace/ros2_ws/src/espkinesis_msgs
+      - ../channeloverride_pub:/workspace/ros2_ws/src/channeloverride_pub
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /dev:/dev
     environment:
