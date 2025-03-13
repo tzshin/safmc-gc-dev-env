@@ -21,7 +21,19 @@ RUN apt-get update && apt-get install -y \
     usbutils \
     dialog \
     apt-utils \
+    wget \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Miniforge
+RUN wget -q https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O /tmp/miniforge.sh \
+    && chmod +x /tmp/miniforge.sh \
+    && /tmp/miniforge.sh -b -p /opt/miniforge \
+    && rm /tmp/miniforge.sh
+
+# Setup Miniforge
+ENV PATH="${PATH}:/opt/miniforge/bin"
+RUN /opt/miniforge/bin/conda init bash
+RUN echo 'auto_activate_base: false' >> /opt/miniforge/condarc
 
 # Set up serial port permissions
 RUN usermod -a -G dialout ros
