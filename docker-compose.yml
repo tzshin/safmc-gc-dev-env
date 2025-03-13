@@ -2,7 +2,8 @@ services:
   ros2:
     build: .
     volumes:
-      - ../safmc-groundcontrol2:/workspace
+      - ../safmc-groundcontrol2:/workspace/safmc-groundcontrol2
+      - ../espkinesis_msgs:/workspace/ros2_ws/src/espkinesis_msgs
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /dev:/dev
     environment:
